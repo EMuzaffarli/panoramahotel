@@ -295,8 +295,10 @@ const CUR = "₼";
 
 /* ==== KOTECLƏR ==== */
 const KOTECS = [
-  { no:"Kotec 3–8", name:"Kotec", capLabel:"2–5 nəfərlik", min:2, max:5, beds:"1 cüt, 2 tək", wkdy:250, wknd:280 },
-  { no:"Kotec 2", name:"VİP Kotec", capLabel:"2–5 nəfərlik", min:2, max:5, beds:"1 cüt, 2 tək", wkdy:300, wknd:350 },
+  { no:"Kotec 3–8", name:"Kotec", capLabel:"2–5 nəfərlik", min:2, max:5, beds:"1 cüt, 2 tək",
+    tiers:[ {cap:"2 nəfər", wkdy:200, wknd:220}, {cap:"3–5 nəfər", wkdy:250, wknd:280} ] },
+  { no:"Kotec 2", name:"VİP Kotec", capLabel:"2–5 nəfərlik", min:2, max:5, beds:"1 cüt, 2 tək",
+    tiers:[ {cap:"2 nəfər", wkdy:250, wknd:280}, {cap:"3–5 nəfər", wkdy:300, wknd:350} ] },
   { no:"Kotec 1", name:"VIP Deluxe", capLabel:"2–10 nəfərlik", min:2, max:10, feature:true,
     beds:"2 cüt + uşaqlar üçün yataq (4 nəfərlik)", perks:["Qapalı hovuz","Sauna","Cakuzi"],
     ladder:[[2,350],[4,450],[6,550],[8,650]], extra:"Əlavə hər nəfər +50 ₼" },
@@ -339,6 +341,11 @@ function renderKotec(k){
   if(k.ladder){
     const lines = k.ladder.map(([n,p])=>`<div class="lr"><span>${n} nəfər</span><b>${p} ${CUR}</b></div>`).join('');
     body = `<div class="ladder">${lines}<div class="extra"><b>${k.extra}</b></div></div>`;
+  } else if(k.tiers){
+    body = k.tiers.map((t,i)=>`
+      <div class="tier" ${i>0?'style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)"':''}>
+        <div class="tier-lbl">${t.cap}</div>${ppRows(t.wkdy,t.wknd)}
+      </div>`).join('');
   } else {
     body = ppRows(k.wkdy, k.wknd);
   }
