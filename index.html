@@ -128,6 +128,10 @@
   .c-ig{font-size:13px;padding:7px 14px;gap:6px}
   .c-ig svg{width:16px;height:16px}
   .ig-row{display:none;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  .tiktok-row{display:flex;justify-content:center;margin-top:8px}
+  .btn-tt{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:#fff;background:#111;padding:10px 20px;border-radius:100px;text-decoration:none;transition:opacity .15s}
+  .btn-tt:hover{opacity:.88}
+  .btn-tt svg{width:18px;height:18px}
   .menu-row{display:flex;justify-content:center;margin-top:10px}
   .btn-menu{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:#fff;background:var(--brass);padding:11px 24px;border-radius:100px;text-decoration:none;transition:opacity .15s}
   .btn-menu:hover{opacity:.9}
@@ -279,6 +283,12 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>@panoramarestoranoguz
       </a>
     </div>
+    <div class="tiktok-row">
+      <a class="btn-tt" href="https://www.tiktok.com/@panoramaresortoghuz" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 01-1.06-2.82h-3.2v12.9a2.34 2.34 0 01-2.34 2.26 2.34 2.34 0 01-2.16-3.28 2.34 2.34 0 012.9-1.28V10.3a5.54 5.54 0 00-1-.09A5.55 5.55 0 004.2 15.7a5.55 5.55 0 009.55 3.86 5.5 5.5 0 001.6-3.9V9.01a7.5 7.5 0 004.4 1.4V7.2a4.28 4.28 0 01-3.15-1.38z"/></svg>
+        @panoramaresortoghuz
+      </a>
+    </div>
     <div class="menu-row">
       <a class="btn-menu" href="https://karekodrestaurantmenu.com/menu/15762" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a2 2 0 002 2 2 2 0 002-2V3"/><path d="M6 12v9"/><path d="M17 3c-1.7 0-3 2.2-3 5s1.3 4 3 4"/><path d="M17 3v18"/></svg>
@@ -427,7 +437,7 @@ function render(){
       // 8+ чел.: советуем взять 2 коттеджа
       html += `<div class="kotec-note advice">
         <div class="kn-label">Məsləhət</div>
-        <p>Bu qədər qonaq üçün <b>2 ayrı kotec və ya otaq</b> götürə bilərsiniz.</p>
+        <p>Bu qədər qonaq üçün <b>2 ayrı kotec və ya otaq</b> götürmək daha rahat və sərfəlidir.</p>
       </div>`;
     }
     document.getElementById('kotecResults').innerHTML = html;
