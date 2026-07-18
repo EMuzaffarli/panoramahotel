@@ -58,6 +58,9 @@
   .kotec-top .no{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);font-weight:700}
   .kotec-top h3{font-size:19px;color:var(--pine);margin:3px 0 6px}
   .cap-chip{display:inline-block;font-size:11.5px;background:var(--ivory-2);color:var(--pine);padding:3px 10px;border-radius:100px;font-weight:500}
+  .k-beds{font-size:12px;color:var(--muted);font-style:italic;margin-top:8px}
+  .k-perks{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;padding-top:10px;border-top:1px dashed var(--line)}
+  .perk{font-size:11.5px;background:rgba(180,137,78,.15);color:#8a6a34;padding:3px 10px;border-radius:100px;font-weight:600}
   .kotec-body{padding:15px 18px;display:flex;flex-direction:column;gap:8px;flex-grow:1}
   .ladder{display:flex;flex-direction:column;gap:6px}
   .ladder .lr{display:flex;justify-content:space-between;font-size:14px}
@@ -193,6 +196,7 @@
     </div>
     <div class="notes">
       <span class="note-pill">Əlavə çarpayı — <b>30 ₼</b></span>
+      <span class="note-pill">Kotec 1 · əlavə hər nəfər — <b>+50 ₼</b></span>
       <span class="note-pill free">0–5 yaş uşaq (1 nəfər) — <b>pulsuz</b></span>
     </div>
   </div>
@@ -211,21 +215,22 @@ const CUR = "₼";
 /* ==== KOTECLƏR ==== */
 const KOTECS = [
   { no:"Kotec 1", name:"VIP Deluxe", capLabel:"2–10 nəfərlik", min:2, max:10, feature:true,
+    beds:"2 taxt · uşaqlar üçün alt-üst yataq", perks:["Qapalı hovuz","Sauna","Cakuzi"],
     ladder:[[2,350],[4,450],[6,550],[8,650]], extra:"Əlavə hər nəfər +50 ₼" },
-  { no:"Kotec 2", name:"VİP Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, wkdy:300, wknd:350 },
-  { no:"Kotec 3–8", name:"Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, wkdy:250, wknd:280 },
+  { no:"Kotec 2", name:"VİP Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 taxt, 2 tək", wkdy:300, wknd:350 },
+  { no:"Kotec 3–8", name:"Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 taxt, 2 tək", wkdy:250, wknd:280 },
 ];
 
 /* ==== OTAQLAR (в заданном порядке) ==== */
 const ROOMS = [
-  { name:"Standart otaq", nums:"24, 25, 26", cap:"2 nəfər", min:2, max:2, balcony:false, wkdy:100, wknd:120 },
-  { name:"Lüks otaq · geniş", nums:"11, 13, 16, 17, 18, 20", cap:"2 nəfər", min:2, max:2, balcony:true, wkdy:120, wknd:140 },
+  { name:"Standart otaq", nums:"24, 25, 26", cap:"2 nəfər", min:2, max:2, balcony:false, note:"1 taxt", wkdy:100, wknd:120 },
+  { name:"Lüks otaq · geniş", nums:"11, 13, 16, 17, 18, 20", cap:"2 nəfər", min:2, max:2, balcony:true, note:"11, 13, 16 — 2 tək · 17, 18, 20 — 1 taxt", wkdy:120, wknd:140 },
   { name:"Lüks otaq", nums:"9, 10, 23, 27", cap:"3 nəfər", min:3, max:3, balcony:false, note:"1 taxt + 1 tək", wkdy:150, wknd:170 },
-  { name:"Lüks otaq", nums:"15", cap:"4 nəfər", min:4, max:4, balcony:true, wkdy:180, wknd:200 },
+  { name:"Lüks otaq", nums:"15", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 otaqda: 1 taxt + 2 ayrı", wkdy:180, wknd:200 },
   { name:"Duplex otaq", nums:"21, 22", cap:"2 nəfər", min:2, max:2, balcony:false, note:"21 — 1 taxt · 22 — 2 tək", wkdy:120, wknd:140 },
-  { name:"Duplex · geniş", nums:"14, 19", balcony:true, min:2, max:3,
+  { name:"Duplex · geniş", nums:"14, 19", balcony:true, min:2, max:3, note:"1 taxt + 1 divan",
     tiers:[ {cap:"2 nəfər", wkdy:150, wknd:170}, {cap:"3 nəfər", wkdy:170, wknd:190} ] },
-  { name:"Duplex · geniş", nums:"12", cap:"4 nəfər", min:4, max:4, balcony:true, wkdy:200, wknd:220 },
+  { name:"Duplex · geniş", nums:"12", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 taxt + 2 ayrı", wkdy:200, wknd:220 },
 ];
 
 let guests = "all";
@@ -256,13 +261,16 @@ function renderKotec(k){
   } else {
     body = ppRows(k.wkdy, k.wknd);
   }
+  const beds = k.beds ? `<div class="k-beds">${k.beds}</div>` : '';
+  const perks = k.perks ? `<div class="k-perks">${k.perks.map(p=>`<span class="perk">${p}</span>`).join('')}</div>` : '';
   return `<div class="kotec${k.feature?' feature':''}">
     <div class="kotec-top">
       <div class="no">${k.no}</div>
       <h3>${k.name}</h3>
       <span class="cap-chip">${k.capLabel}</span>
+      ${beds}
     </div>
-    <div class="kotec-body">${body}</div>
+    <div class="kotec-body">${body}${perks}</div>
   </div>`;
 }
 
