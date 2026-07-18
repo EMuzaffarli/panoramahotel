@@ -215,22 +215,22 @@ const CUR = "₼";
 /* ==== KOTECLƏR ==== */
 const KOTECS = [
   { no:"Kotec 1", name:"VIP Deluxe", capLabel:"2–10 nəfərlik", min:2, max:10, feature:true,
-    beds:"2 taxt · uşaqlar üçün yataq (4 nəfərlik)", perks:["Qapalı hovuz","Sauna","Cakuzi"],
+    beds:"2 cüt · uşaqlar üçün yataq (4 nəfərlik)", perks:["Qapalı hovuz","Sauna","Cakuzi"],
     ladder:[[2,350],[4,450],[6,550],[8,650]], extra:"Əlavə hər nəfər +50 ₼" },
-  { no:"Kotec 2", name:"VİP Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 taxt, 2 tək", wkdy:300, wknd:350 },
-  { no:"Kotec 3–8", name:"Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 taxt, 2 tək", wkdy:250, wknd:280 },
+  { no:"Kotec 2", name:"VİP Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 cüt, 2 tək", wkdy:300, wknd:350 },
+  { no:"Kotec 3–8", name:"Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 cüt, 2 tək", wkdy:250, wknd:280 },
 ];
 
 /* ==== OTAQLAR (в заданном порядке) ==== */
 const ROOMS = [
-  { name:"Standart otaq", nums:"24, 25, 26", cap:"2 nəfər", min:2, max:2, balcony:false, note:"1 taxt", wkdy:100, wknd:120 },
-  { name:"Lüks otaq · geniş", nums:"11, 13, 16, 17, 18, 20", cap:"2 nəfər", min:2, max:2, balcony:true, note:"11, 13, 16 — 2 tək · 17, 18, 20 — 1 taxt", wkdy:120, wknd:140 },
-  { name:"Lüks otaq", nums:"9, 10, 23, 27", cap:"3 nəfər", min:3, max:3, balcony:false, note:"1 taxt + 1 tək", wkdy:150, wknd:170 },
-  { name:"Lüks otaq", nums:"15", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 otaqda: 1 taxt + 2 ayrı", wkdy:180, wknd:200 },
-  { name:"Duplex otaq", nums:"21, 22", cap:"2 nəfər", min:2, max:2, balcony:false, note:"21 — 1 taxt · 22 — 2 tək", wkdy:120, wknd:140 },
-  { name:"Duplex · geniş", nums:"14, 19", balcony:true, min:2, max:3, note:"1 taxt + 1 divan",
+  { name:"Standart otaq", nums:"24, 25, 26", cap:"2 nəfər", min:2, max:2, balcony:false, note:"1 cüt", wkdy:100, wknd:120 },
+  { name:"Lüks otaq · geniş", nums:"11, 13, 16, 17, 18, 20", cap:"2 nəfər", min:2, max:2, balcony:true, note:"11, 13, 16 — 2 tək · 17, 18, 20 — 1 cüt", wkdy:120, wknd:140 },
+  { name:"Lüks otaq", nums:"9, 10, 23, 27", cap:"3 nəfər", min:3, max:3, balcony:false, note:"1 cüt + 1 tək", wkdy:150, wknd:170 },
+  { name:"Lüks otaq", nums:"15", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 otaqda: 1 cüt + 2 ayrı", wkdy:180, wknd:200 },
+  { name:"Duplex otaq", nums:"21, 22", cap:"2 nəfər", min:2, max:2, balcony:false, note:"21 — 1 cüt · 22 — 2 tək", wkdy:120, wknd:140 },
+  { name:"Duplex · geniş", nums:"14, 19", balcony:true, min:2, max:3, note:"1 cüt + 1 divan",
     tiers:[ {cap:"2 nəfər", wkdy:150, wknd:170}, {cap:"3 nəfər", wkdy:170, wknd:190} ] },
-  { name:"Duplex · geniş", nums:"12", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 taxt + 2 ayrı", wkdy:200, wknd:220 },
+  { name:"Duplex · geniş", nums:"12", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 cüt + 2 ayrı", wkdy:200, wknd:220 },
 ];
 
 let guests = "all";
