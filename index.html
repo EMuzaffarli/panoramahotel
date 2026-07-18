@@ -189,16 +189,16 @@
     </div>
   </div>
 
-  <!-- КОТТЕДЖИ -->
-  <div class="section" id="kotecSection">
-    <div class="sec-title"><h2>Koteclər</h2><span class="rule"></span><span class="cnt" id="kotecCnt"></span></div>
-    <div class="kotec-grid" id="kotecResults"></div>
-  </div>
-
   <!-- НОМЕРА -->
   <div class="section" id="roomSection">
     <div class="sec-title"><h2>Otaqlar</h2><span class="rule"></span><span class="cnt" id="roomCnt"></span></div>
     <div class="room-grid" id="roomResults"></div>
+  </div>
+
+  <!-- КОТТЕДЖИ -->
+  <div class="section" id="kotecSection">
+    <div class="sec-title"><h2>Koteclər</h2><span class="rule"></span><span class="cnt" id="kotecCnt"></span></div>
+    <div class="kotec-grid" id="kotecResults"></div>
   </div>
 <!-- QİYMƏTƏ DAXİLDİR -->
   <div class="included">
@@ -214,7 +214,7 @@
       </div>
       <div class="inc-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/></svg>
-        <span>Əyləncəli oyunlar<small>Bilyard, tennis</small></span>
+        <span>Əyləncəli oyunlar<small>Bilyard, tennis, stolüstü xokkey, uşaq əyləncəsi</small></span>
       </div>
       <div class="inc-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
@@ -295,22 +295,22 @@ const CUR = "₼";
 
 /* ==== KOTECLƏR ==== */
 const KOTECS = [
+  { no:"Kotec 3–8", name:"Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 cüt, 2 tək", wkdy:250, wknd:280 },
+  { no:"Kotec 2", name:"VİP Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 cüt, 2 tək", wkdy:300, wknd:350 },
   { no:"Kotec 1", name:"VIP Deluxe", capLabel:"2–10 nəfərlik", min:2, max:10, feature:true,
     beds:"2 cüt + uşaqlar üçün yataq (4 nəfərlik)", perks:["Qapalı hovuz","Sauna","Cakuzi"],
     ladder:[[2,350],[4,450],[6,550],[8,650]], extra:"Əlavə hər nəfər +50 ₼" },
-  { no:"Kotec 2", name:"VİP Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 cüt, 2 tək", wkdy:300, wknd:350 },
-  { no:"Kotec 3–8", name:"Kotec", capLabel:"3–5 nəfərlik", min:3, max:5, beds:"1 cüt, 2 tək", wkdy:250, wknd:280 },
 ];
 
 /* ==== OTAQLAR (в заданном порядке) ==== */
 const ROOMS = [
-  { name:"Standart otaq", nums:"24, 25, 26", cap:"2 nəfər", min:2, max:2, balcony:false, note:"1 cüt", wkdy:100, wknd:120 },
+  { name:"Standart otaq · kiçik", nums:"24, 25, 26", cap:"2 nəfər", min:2, max:2, balcony:false, note:"1 cüt", wkdy:100, wknd:120 },
   { name:"Lüks otaq · geniş", nums:"11, 13, 16, 17, 18, 20", cap:"2 nəfər", min:2, max:2, balcony:true, note:"11, 13, 16 — 2 tək · 17, 18, 20 — 1 cüt", wkdy:120, wknd:140 },
-  { name:"Lüks otaq", nums:"9, 10, 23, 27", cap:"3 nəfər", min:3, max:3, balcony:false, note:"1 cüt + 1 tək", wkdy:150, wknd:170 },
-  { name:"Lüks otaq", nums:"15", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 otaqda: 1 cüt + 2 ayrı", wkdy:180, wknd:200 },
   { name:"Duplex otaq", nums:"21, 22", cap:"2 nəfər", min:2, max:2, balcony:false, note:"21 — 1 cüt · 22 — 2 tək", wkdy:120, wknd:140 },
   { name:"Duplex · geniş", nums:"14, 19", balcony:true, min:2, max:3, note:"1 cüt + 1 divan",
     tiers:[ {cap:"2 nəfər", wkdy:150, wknd:170}, {cap:"3 nəfər", wkdy:170, wknd:190} ] },
+  { name:"Lüks otaq", nums:"9, 10, 23, 27", cap:"3 nəfər", min:3, max:3, balcony:false, note:"1 cüt + 1 tək", wkdy:150, wknd:170 },
+  { name:"Lüks otaq", nums:"15", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 otaqda: 1 cüt + 2 ayrı", wkdy:180, wknd:200 },
   { name:"Duplex · geniş", nums:"12", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 cüt + 2 ayrı", wkdy:200, wknd:220 },
 ];
 
