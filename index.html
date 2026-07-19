@@ -139,16 +139,17 @@
 
   /* BONUS KARTI */
   .bonus-banner{margin:14px 36px 0;display:flex;align-items:center;gap:16px;cursor:pointer;
-    background:linear-gradient(135deg,#CBA96C 0%,#B4894E 60%,#9c7539 100%);color:#fff;border-radius:14px;
-    padding:15px 20px;box-shadow:0 16px 32px -18px rgba(180,137,78,.85);transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden}
-  .bonus-banner::after{content:"";position:absolute;top:-40%;right:-6%;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 65%);pointer-events:none}
-  .bonus-banner:hover{transform:translateY(-1px);box-shadow:0 20px 40px -18px rgba(180,137,78,.95)}
+    background:linear-gradient(135deg,#2C4A3B 0%,#1C3428 60%,#14261D 100%);color:#fff;border-radius:14px;
+    padding:15px 20px;box-shadow:0 16px 32px -18px rgba(20,38,29,.8);transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden}
+  .bonus-banner::after{content:"";position:absolute;top:-40%;right:-6%;width:180px;height:180px;background:radial-gradient(circle,rgba(203,169,108,.28),transparent 65%);pointer-events:none}
+  .bonus-banner:hover{transform:translateY(-1px);box-shadow:0 20px 40px -18px rgba(20,38,29,.92)}
   .bb-icon{width:44px;height:44px;flex-shrink:0;border-radius:11px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
   .bb-icon svg{width:24px;height:24px;color:#fff}
   .bb-text{flex:1;position:relative;z-index:1;min-width:0}
   .bb-text .t{font-family:'Fraunces',serif;font-size:19px;font-weight:600}
-  .bb-text .s{font-size:12.5px;opacity:.92}
-  .bb-pct{font-family:'Fraunces',serif;font-size:28px;font-weight:600;position:relative;z-index:1;white-space:nowrap}
+  .bb-text .s{font-size:13px;opacity:.95;margin-top:2px}
+  .bb-text .s2{font-size:11.5px;opacity:.7;margin-top:1px}
+  .bb-pct{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--brass-light);position:relative;z-index:1;white-space:nowrap}
 
   .bonus-modal{position:fixed;inset:0;background:rgba(28,52,40,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
   .bonus-modal.open{display:flex}
@@ -160,6 +161,23 @@
   .bm-example{background:var(--ivory-2);border-radius:12px;padding:16px 18px;font-size:14.5px;line-height:1.65;color:var(--ink)}
   .bm-example b{color:var(--brass);font-weight:700}
   .bm-cond{font-size:13px;color:var(--muted);margin:14px 0 0}
+
+  /* Şəkillər düyməsi + qalereya */
+  .shot-btn{margin-top:12px;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;background:var(--ivory-2);color:var(--pine);border:none;border-radius:100px;padding:7px 14px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s}
+  .shot-btn:hover{background:#e5dcc7}
+  .shot-btn svg{width:15px;height:15px;color:var(--brass)}
+  .gallery-modal{position:fixed;inset:0;background:rgba(28,52,40,.62);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+  .gallery-modal.open{display:flex}
+  .gallery-modal-card{background:var(--paper);border-radius:18px;max-width:660px;width:100%;padding:26px 26px 28px;position:relative;box-shadow:0 30px 70px -20px rgba(0,0,0,.5);max-height:90vh;overflow:auto}
+  .gallery-head{margin-bottom:16px;padding-right:32px}
+  .gallery-modal-card h3{font-size:22px;color:var(--pine);margin-bottom:2px}
+  .gallery-sub{font-size:13.5px;color:var(--muted)}
+  .gallery-sub b{color:var(--ink);font-weight:600}
+  .gallery-grid{display:flex;flex-wrap:wrap;gap:10px}
+  .gallery-grid .gph{position:relative;display:block;order:0;border-radius:10px;overflow:hidden;line-height:0}
+  .gallery-grid .gph img{height:180px;width:auto;max-width:100%;object-fit:cover;display:block}
+  .gallery-grid .gph .cap{position:absolute;top:8px;left:8px;background:rgba(28,52,40,.75);color:#fff;font-size:11.5px;font-weight:600;line-height:1.2;padding:4px 10px;border-radius:100px;z-index:1}
+  .gallery-empty{text-align:center;color:var(--muted);font-size:14px;padding:26px 10px}
 
   .sheet-foot{margin-top:20px;padding:16px 36px 22px;background:var(--ivory-2);color:var(--muted);font-size:12.5px;text-align:center}
   .sheet-foot b{color:var(--pine)}
@@ -173,6 +191,7 @@
     .legend,.filter,.included,.contact{padding-left:20px;padding-right:20px}
     .filter{margin-left:20px;margin-right:20px}
     .bonus-banner{margin-left:20px;margin-right:20px}
+    .gallery-grid .gph img{height:140px}
     .included{margin-left:20px;margin-right:20px}
     .sheet-foot{padding-left:20px;padding-right:20px}
     .c-ig{display:none}
@@ -229,9 +248,10 @@
     </div>
     <div class="bb-text">
       <div class="t">Bonus Kartı</div>
-      <div class="s">Hər ödənişdən 10% qazan · şərtlər üçün toxun</div>
+      <div class="s">Hər ödənişdən 10% bonus qazan</div>
+      <div class="s2">Şərtlər üçün toxun</div>
     </div>
-    <div class="bb-pct">+10%</div>
+    <div class="bb-pct">10%</div>
   </div>
 
   <!-- НОМЕРА -->
@@ -353,6 +373,19 @@
   </div>
 </div>
 
+<!-- ВСПЛЫВАЮЩЕЕ ОКНО ФОТО -->
+<div class="gallery-modal" id="galleryModal" onclick="if(event.target===this)closeGallery()">
+  <div class="gallery-modal-card">
+    <button class="bm-close" onclick="closeGallery()" aria-label="Bağla">×</button>
+    <div class="gallery-head">
+      <h3 id="galleryTitle"></h3>
+      <div class="gallery-sub" id="gallerySub"></div>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <div class="gallery-empty" id="galleryEmpty">Şəkillər tezliklə əlavə olunacaq.</div>
+  </div>
+</div>
+
 
 <script>
 const CUR = "₼";
@@ -360,29 +393,81 @@ const CUR = "₼";
 /* Bonus Kartı — всплывающее окно */
 function openBonus(){ document.getElementById('bonusModal').classList.add('open'); }
 function closeBonus(){ document.getElementById('bonusModal').classList.remove('open'); }
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeBonus(); });
+
+/* Şəkillər — галерея комнаты */
+const MAX_PHOTOS = 6;
+const photoCache = {}; // id -> true/false
+function wirePhotoButtons(){
+  document.querySelectorAll('.shot-btn').forEach(btn => {
+    const id = btn.dataset.id;
+    if(photoCache[id] === true){ btn.style.display = ''; return; }
+    const item = [...ROOMS, ...KOTECS].find(x => x.id === id);
+    const bases = (item && item.nums) ? item.nums.split(',').map(s => 'otaq-' + s.trim()) : [id];
+    bases.forEach(base => {
+      const probe = new Image();
+      probe.onload = () => { photoCache[id] = true; document.querySelectorAll('.shot-btn[data-id="'+id+'"]').forEach(b => b.style.display = ''); };
+      probe.src = 'photos/' + base + '-1.jpg';
+    });
+  });
+}
+function openGallery(id){
+  const item = [...ROOMS, ...KOTECS].find(x => x.id === id);
+  document.getElementById('galleryTitle').textContent = item ? item.name : 'Şəkillər';
+  document.getElementById('gallerySub').style.display = 'none';
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = '';
+  const empty = document.getElementById('galleryEmpty');
+  empty.style.display = '';
+  document.getElementById('galleryModal').classList.add('open');
+
+  // каждая комната = свой набор фото: otaq-<номер>-<i>.jpg, коттедж: <id>-<i>.jpg
+  let units = [];
+  if(item && item.nums){
+    item.nums.split(',').map(s => s.trim()).forEach(num => units.push({ base: 'otaq-' + num, label: 'Otaq ' + num }));
+  } else if(item){
+    units.push({ base: item.id, label: item.no || item.name });
+  }
+
+  units.forEach((u, ui) => {
+    for(let i = 1; i <= MAX_PHOTOS; i++){
+      const img = new Image();
+      img.src = 'photos/' + u.base + '-' + i + '.jpg';
+      img.onload = () => {
+        const a = document.createElement('a');
+        a.href = img.src; a.target = '_blank'; a.rel = 'noopener'; a.className = 'gph'; a.style.order = ui * 100 + i;
+        const cap = document.createElement('span'); cap.className = 'cap'; cap.textContent = u.label;
+        a.appendChild(img); a.appendChild(cap);
+        grid.appendChild(a);
+        empty.style.display = 'none';
+      };
+    }
+  });
+}
+function closeGallery(){ document.getElementById('galleryModal').classList.remove('open'); }
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeBonus(); closeGallery(); } });
 
 /* ==== KOTECLƏR ==== */
 const KOTECS = [
-  { no:"Kotec 3–8", name:"Kotec", capLabel:"2–5 nəfərlik", min:2, max:5, beds:"1 cüt, 2 tək",
+  { id:"kotec3", no:"Kotec 3–8", name:"Kotec", capLabel:"2–5 nəfərlik", min:2, max:5, beds:"1 cüt, 2 tək",
     tiers:[ {cap:"2 nəfər", min:2, max:2, wkdy:200, wknd:220}, {cap:"3–5 nəfər", min:3, max:5, wkdy:250, wknd:280} ] },
-  { no:"Kotec 2", name:"VİP Kotec", capLabel:"2–5 nəfərlik", min:2, max:5, beds:"1 cüt, 2 tək",
+  { id:"kotec2", no:"Kotec 2", name:"VİP Kotec", capLabel:"2–5 nəfərlik", min:2, max:5, beds:"1 cüt, 2 tək",
     tiers:[ {cap:"2 nəfər", min:2, max:2, wkdy:250, wknd:280}, {cap:"3–5 nəfər", min:3, max:5, wkdy:300, wknd:350} ] },
-  { no:"Kotec 1", name:"VIP Deluxe", capLabel:"2–10 nəfərlik", min:2, max:10, feature:true,
+  { id:"kotec1", no:"Kotec 1", name:"VIP Deluxe", capLabel:"2–10 nəfərlik", min:2, max:10, feature:true,
     beds:"2 cüt + uşaqlar üçün yataq (4 nəfərlik)", perks:["Qapalı hovuz","Sauna","Cakuzi"],
     ladder:[[2,350],[4,450],[6,550],[8,650]], base:350, perExtra:50, extra:"Əlavə hər nəfər +50 ₼" },
 ];
 
 /* ==== OTAQLAR (в заданном порядке) ==== */
 const ROOMS = [
-  { name:"Standart otaq · kiçik", nums:"24, 25, 26", cap:"2 nəfər", min:2, max:2, balcony:false, note:"1 cüt", wkdy:100, wknd:120 },
-  { name:"Lüks otaq · geniş", nums:"11, 13, 16, 17, 18, 20", cap:"2 nəfər", min:2, max:2, balcony:true, note:"11, 13, 16 — 2 tək · 17, 18, 20 — 1 cüt", wkdy:120, wknd:140 },
-  { name:"Duplex otaq", nums:"21, 22", cap:"2 nəfər", min:2, max:2, balcony:false, note:"21 — 1 cüt · 22 — 2 tək", wkdy:120, wknd:140 },
-  { name:"Duplex · geniş", nums:"14, 19", balcony:true, min:2, max:3, note:"1 cüt + 1 divan",
+  { id:"standart", name:"Standart otaq · kiçik", nums:"24, 25, 26", cap:"2 nəfər", min:2, max:2, balcony:false, note:"1 cüt", wkdy:100, wknd:120 },
+  { id:"luks-genis", name:"Lüks otaq · geniş", nums:"11, 13, 16, 17, 18, 20", cap:"2 nəfər", min:2, max:2, balcony:true, note:"11, 13, 16 — 2 tək · 17, 18, 20 — 1 cüt", wkdy:120, wknd:140 },
+  { id:"duplex-21-22", name:"Duplex otaq", nums:"21, 22", cap:"2 nəfər", min:2, max:2, balcony:false, note:"21 — 1 cüt · 22 — 2 tək", wkdy:120, wknd:140 },
+  { id:"duplex-genis", name:"Duplex · geniş", nums:"14, 19", balcony:true, min:2, max:3, note:"1 cüt + 1 divan",
     tiers:[ {cap:"2 nəfər", min:2, max:2, wkdy:150, wknd:170}, {cap:"3 nəfər", min:3, max:3, wkdy:170, wknd:190} ] },
-  { name:"Lüks otaq", nums:"9, 10, 23, 27", cap:"3 nəfər", min:3, max:3, balcony:false, note:"1 cüt + 1 tək", wkdy:150, wknd:170 },
-  { name:"Lüks otaq", nums:"15", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 otaqda: 1 cüt + 2 ayrı", wkdy:180, wknd:200 },
-  { name:"Duplex · geniş", nums:"12", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 cüt + 2 ayrı", wkdy:200, wknd:220 },
+  { id:"luks", name:"Lüks otaq", nums:"9, 10, 23, 27", cap:"3 nəfər", min:3, max:3, balcony:false, note:"1 cüt + 1 tək", wkdy:150, wknd:170 },
+  { id:"luks15", name:"Lüks otaq", nums:"15", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 otaqda: 1 cüt + 2 ayrı", wkdy:180, wknd:200 },
+  { id:"duplex12", name:"Duplex · geniş", nums:"12", cap:"4 nəfər", min:4, max:4, balcony:true, note:"1 cüt + 2 ayrı", wkdy:200, wknd:220 },
 ];
 
 let guests = "all";
@@ -419,6 +504,12 @@ function renderTiers(tiers){
     </div>`).join('');
 }
 
+/* кнопка "Şəkillər" (скрыта, показывается если у номера есть фото) */
+function shotBtn(id){
+  return `<button class="shot-btn" data-id="${id}" style="display:none" onclick="openGallery('${id}')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5-5-6 6"/></svg>Şəkillər</button>`;
+}
+
 function renderKotec(k){
   let body;
   if(k.ladder){
@@ -444,7 +535,7 @@ function renderKotec(k){
       <span class="cap-chip">${k.capLabel}</span>
       ${beds}
     </div>
-    <div class="kotec-body">${body}${perks}</div>
+    <div class="kotec-body">${body}${perks}${shotBtn(k.id)}</div>
   </div>`;
 }
 
@@ -466,6 +557,7 @@ function renderRoom(r){
     <div class="r-meta"><span class="r-nums">Otaq <b>${r.nums}</b></span>${cap}</div>
     ${note}
     <div class="r-prices">${prices}</div>
+    ${shotBtn(r.id)}
   </div>`;
 }
 
@@ -505,6 +597,8 @@ function render(){
     document.getElementById('roomResults').innerHTML = rs.map(renderRoom).join('');
     document.getElementById('roomCnt').textContent = rs.length + ' otaq tipi';
   } else { rSec.style.display = 'none'; }
+
+  wirePhotoButtons();
 }
 
 render();
