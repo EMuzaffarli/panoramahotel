@@ -178,6 +178,10 @@
   .gallery-grid .gph img{height:180px;width:auto;max-width:100%;object-fit:cover;display:block}
   .gallery-grid .gph .cap{position:absolute;top:8px;left:8px;background:rgba(28,52,40,.75);color:#fff;font-size:11.5px;font-weight:600;line-height:1.2;padding:4px 10px;border-radius:100px;z-index:1}
   .gallery-empty{text-align:center;color:var(--muted);font-size:14px;padding:26px 10px}
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:24px;z-index:200;cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:100%;max-height:92vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .lb-close{position:absolute;top:14px;right:20px;background:none;border:none;color:#fff;font-size:34px;line-height:1;cursor:pointer;z-index:1}
 
   .sheet-foot{margin-top:20px;padding:16px 36px 22px;background:var(--ivory-2);color:var(--muted);font-size:12.5px;text-align:center}
   .sheet-foot b{color:var(--pine)}
@@ -386,6 +390,12 @@
   </div>
 </div>
 
+<!-- УВЕЛИЧЕННОЕ ФОТО (лайтбокс) -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Bağla">×</button>
+  <img id="lightboxImg" alt="">
+</div>
+
 
 <script>
 const CUR = "₼";
@@ -434,7 +444,8 @@ function openGallery(id){
       img.src = 'photos/' + u.base + '-' + i + '.jpg';
       img.onload = () => {
         const a = document.createElement('a');
-        a.href = img.src; a.target = '_blank'; a.rel = 'noopener'; a.className = 'gph'; a.style.order = ui * 100 + i;
+        a.className = 'gph'; a.style.order = ui * 100 + i; a.style.cursor = 'zoom-in';
+        a.onclick = () => openLightbox(img.src);
         const cap = document.createElement('span'); cap.className = 'cap'; cap.textContent = u.label;
         a.appendChild(img); a.appendChild(cap);
         grid.appendChild(a);
@@ -445,7 +456,16 @@ function openGallery(id){
 }
 function closeGallery(){ document.getElementById('galleryModal').classList.remove('open'); }
 
-document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeBonus(); closeGallery(); } });
+/* Увеличенное фото */
+function openLightbox(src){ document.getElementById('lightboxImg').src = src; document.getElementById('lightbox').classList.add('open'); }
+function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    if(document.getElementById('lightbox').classList.contains('open')){ closeLightbox(); }
+    else { closeBonus(); closeGallery(); }
+  }
+});
 
 /* ==== KOTECLƏR ==== */
 const KOTECS = [
