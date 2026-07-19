@@ -137,6 +137,30 @@
   .btn-menu:hover{opacity:.9}
   .btn-menu svg{width:18px;height:18px}
 
+  /* BONUS KARTI */
+  .bonus-banner{margin:14px 36px 0;display:flex;align-items:center;gap:16px;cursor:pointer;
+    background:linear-gradient(135deg,#CBA96C 0%,#B4894E 60%,#9c7539 100%);color:#fff;border-radius:14px;
+    padding:15px 20px;box-shadow:0 16px 32px -18px rgba(180,137,78,.85);transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden}
+  .bonus-banner::after{content:"";position:absolute;top:-40%;right:-6%;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 65%);pointer-events:none}
+  .bonus-banner:hover{transform:translateY(-1px);box-shadow:0 20px 40px -18px rgba(180,137,78,.95)}
+  .bb-icon{width:44px;height:44px;flex-shrink:0;border-radius:11px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+  .bb-icon svg{width:24px;height:24px;color:#fff}
+  .bb-text{flex:1;position:relative;z-index:1;min-width:0}
+  .bb-text .t{font-family:'Fraunces',serif;font-size:19px;font-weight:600}
+  .bb-text .s{font-size:12.5px;opacity:.92}
+  .bb-pct{font-family:'Fraunces',serif;font-size:28px;font-weight:600;position:relative;z-index:1;white-space:nowrap}
+
+  .bonus-modal{position:fixed;inset:0;background:rgba(28,52,40,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+  .bonus-modal.open{display:flex}
+  .bonus-modal-card{background:var(--paper);border-radius:18px;max-width:440px;width:100%;padding:30px 28px;position:relative;box-shadow:0 30px 70px -20px rgba(0,0,0,.45);max-height:90vh;overflow:auto}
+  .bm-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:26px;color:var(--muted);cursor:pointer;line-height:1}
+  .bm-badge{display:inline-block;background:linear-gradient(135deg,#CBA96C,#B4894E);color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:5px 13px;border-radius:100px;margin-bottom:14px}
+  .bonus-modal-card h3{font-size:24px;color:var(--pine);margin-bottom:14px}
+  .bonus-modal-card p{font-size:15px;color:var(--ink);line-height:1.65;margin-bottom:14px}
+  .bm-example{background:var(--ivory-2);border-radius:12px;padding:16px 18px;font-size:14.5px;line-height:1.65;color:var(--ink)}
+  .bm-example b{color:var(--brass);font-weight:700}
+  .bm-cond{font-size:13px;color:var(--muted);margin:14px 0 0}
+
   .sheet-foot{margin-top:20px;padding:16px 36px 22px;background:var(--ivory-2);color:var(--muted);font-size:12.5px;text-align:center}
   .sheet-foot b{color:var(--pine)}
 
@@ -148,6 +172,7 @@
     .section{padding:20px 20px 4px}
     .legend,.filter,.included,.contact{padding-left:20px;padding-right:20px}
     .filter{margin-left:20px;margin-right:20px}
+    .bonus-banner{margin-left:20px;margin-right:20px}
     .included{margin-left:20px;margin-right:20px}
     .sheet-foot{padding-left:20px;padding-right:20px}
     .c-ig{display:none}
@@ -197,6 +222,18 @@
     </div>
   </div>
 
+  <!-- BONUS KARTI -->
+  <div class="bonus-banner" onclick="openBonus()">
+    <div class="bb-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M6.5 15H11"/></svg>
+    </div>
+    <div class="bb-text">
+      <div class="t">Bonus Kartı</div>
+      <div class="s">Hər ödənişdən 10% qazan · şərtlər üçün toxun</div>
+    </div>
+    <div class="bb-pct">+10%</div>
+  </div>
+
   <!-- НОМЕРА -->
   <div class="section" id="roomSection">
     <div class="sec-title"><h2>Otaqlar</h2><span class="rule"></span><span class="cnt" id="roomCnt"></span></div>
@@ -231,7 +268,7 @@
     </div>
     <div class="notes">
       <span class="note-pill">Əlavə çarpayı — <b>30 ₼</b></span>
-      
+      <span class="note-pill">Standart otaqdan başqa bütün otaq və kotec tiplərinə çarpayı əlavə etmək olar</span>
       <span class="note-pill free">0–5 yaş uşaq (1 nəfər) — <b>pulsuz</b></span>
     </div>
   </div>
@@ -303,9 +340,28 @@
 
 </div>
 
+<!-- ВСПЛЫВАЮЩЕЕ ОКНО BONUS KARTI -->
+<div class="bonus-modal" id="bonusModal" onclick="if(event.target===this)closeBonus()">
+  <div class="bonus-modal-card">
+    <button class="bm-close" onclick="closeBonus()" aria-label="Bağla">×</button>
+    <span class="bm-badge">Bonus Kartı · 10%</span>
+    <h3>Necə işləyir?</h3>
+    <p>Oteldə hər ödənişin <b>10%-i</b> bonus kartınıza qaytarılır. Bonuslar yığılır və kifayət qədər məbləğ toplandıqda onunla növbəti gecələməni ödəyə bilərsiniz.</p>
+    <div class="bm-example">
+      <b>Nümunə:</b> Standart otaq (kiçik)-də 3 gecə qalırsınız — <b>300 ₼</b>. Kartınıza <b>30 ₼</b> bonus yığılır. <b>100 ₼</b> topladıqda — <b>1 gecə pulsuz</b> qala bilərsiniz!
+    </div>
+    <p class="bm-cond">Şərt: bonusdan istifadə üçün lazımi məbləğ tam yığılmalıdır.</p>
+  </div>
+</div>
+
 
 <script>
 const CUR = "₼";
+
+/* Bonus Kartı — всплывающее окно */
+function openBonus(){ document.getElementById('bonusModal').classList.add('open'); }
+function closeBonus(){ document.getElementById('bonusModal').classList.remove('open'); }
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeBonus(); });
 
 /* ==== KOTECLƏR ==== */
 const KOTECS = [
@@ -437,7 +493,7 @@ function render(){
       // 8+ чел.: советуем взять 2 коттеджа
       html += `<div class="kotec-note advice">
         <div class="kn-label">Məsləhət</div>
-        <p>Bu qədər qonaq üçün <b>2 ayrı kotec və ya otaq</b> götürmək daha rahat və sərfəlidir.</p>
+        <p>Bu qədər qonaq üçün <b>2 ayrı kotec</b> götürmək daha rahat və sərfəlidir.</p>
       </div>`;
     }
     document.getElementById('kotecResults').innerHTML = html;
